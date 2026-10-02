@@ -1,0 +1,21 @@
+include "./cfg/animation.kdl"
+output "eDP-1" {
+    mode "1366x768@60.002"
+
+    scale 1.0
+
+    transform "normal"
+    position x=0 y=0
+}
+include "./cfg/autostart.kdl"
+include "./cfg/keybinds.kdl"
+include "./cfg/input.kdl"
+include "./cfg/display.kdl"
+include "./cfg/layout.kdl"
+include "./cfg/rules.kdl"
+
+prefer-no-csd
+
+include "./cfg/misc.kdl"
+
+

@@ -1,0 +1,98 @@
+// ── Global Blur Settings ─────────────────────────────────────
+// These affect ALL windows with blur enabled. Adjust to taste!
+blur {
+    passes 6        // Higher = stronger, softer blur (default is 3)
+    offset 4.0      // Pixel offset multiplier; increase for smoother blur (default is 3.0)
+    noise 0.03      // Adds a subtle grain (default is 0.02)
+    saturation 1.2  // Color intensity of the blurred background (default is 1.5)
+}
+
+// ── Global Window Rules ──────────────────────────────────────
+window-rule {
+    geometry-corner-radius 20 // Set every window radius to 20
+    clip-to-geometry true
+    draw-border-with-background false
+}
+
+// Global opacity and blur (applies to all windows unless overridden)
+window-rule {
+    opacity 0.75
+    background-effect {
+        blur true
+        xray true
+    }
+}
+
+// ── Noctalia Settings Window ─────────────────────────────────
+window-rule {
+    match app-id="dev.noctalia.Noctalia"
+    open-floating false
+    default-column-width { fixed 1366; }
+    default-window-height { fixed 768; }
+}
+
+// ── Steam Rules ──────────────────────────────────────────────
+window-rule {
+    match app-id="steam"
+    exclude title=r"^[Ss]team$"
+    open-floating true
+}
+
+window-rule {
+    match app-id="steam" title=r"^notificationtoasts_\d+_desktop$"
+    default-floating-position x=10 y=10 relative-to="bottom-right"
+    open-focused false
+}
+
+// ── Noctalia Layer Rules ─────────────────────────────────────
+layer-rule {
+    match namespace="^noctalia-wallpaper"
+    place-within-backdrop true
+}
+
+layer-rule {
+    match namespace="^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"
+    background-effect {
+        blur true
+        xray false
+    }
+}
+
+// ── App Specific Rules ───────────────────────────────────────
+// Firefox (Web Apps)
+window-rule {
+    match app-id="firefox"
+    opacity 0.75
+    background-effect {
+        blur true
+        xray true
+    }
+}
+
+// Discord (Added opacity so the blur actually shows!)
+window-rule {
+    match app-id="discord"
+    opacity 0.8
+    background-effect {
+        blur false
+        xray false
+    }
+}
+
+// Nautilus (Files) - slightly more see-through
+window-rule {
+    match app-id="org.gnome.Nautilus"
+    opacity 0.9999999
+    background-effect {
+        blur true
+        xray false
+    }
+}
+
+// ── Exceptions (keep these LAST so they override the global rule) ──
+// Video players stay fully opaque
+window-rule {
+    match app-id="mpv"
+    match app-id="vlc"
+    opacity 1.0
+}

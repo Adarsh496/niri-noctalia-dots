@@ -1,0 +1,57 @@
+# ~/.config/noctalia/config.toml
+
+# ─────────────────────────────────────────────────────────────
+#  Lock Screen Appearance
+# ─────────────────────────────────────────────────────────────
+[lockscreen]
+enabled = true
+blur_intensity = 0.5        # Background blur (0.0 - 1.0)
+tint_intensity = 0.3        # Dark tint over blur (0.0 - 1.0)
+allow_empty_password = false
+lock_before_suspend = true
+
+# ─────────────────────────────────────────────────────────────
+#  Lock Screen Widgets
+# ─────────────────────────────────────────────────────────────
+[lockscreen_widgets]
+enabled = true
+widget_order = [
+    "lockscreen-clock@eDP-1",
+    "lockscreen-login-box@eDP-1"
+]
+
+# ── Clock Widget ─────────────────────────────────────────────
+[lockscreen_widgets.widget."lockscreen-clock@eDP-1"]
+type = "clock"
+output = "eDP-1"
+cx = 683.0                  # Center X (half of 1366)
+cy = 250.0                  # Center Y (upper-middle)
+
+[lockscreen_widgets.widget."lockscreen-clock@eDP-1".settings]
+format = "HH\nmm"           # Time on two lines (HH over mm)
+use_primary_color = true
+font_size = 48.0            # Large, prominent clock
+
+# ── Login Box Widget ─────────────────────────────────────────
+[lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+type = "login_box"
+output = "eDP-1"
+cx = 683.0                  # Same Center X
+cy = 500.0                  # Below the clock
+box_width = 300.0           # Narrow, pill-shaped box
+box_height = 48.0
+
+[lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+background_color = "surface_variant"
+background_opacity = 0.88
+background_radius = 12.0
+show_caps_lock = true
+show_keyboard_layout = false
+show_login_button = false
+show_session_buttons = false
+show_media = false
+show_weather = false
+show_unlock_hint = true
+
+[shell.screenshot]
+directory = "~/Pictures/Screenshots"
