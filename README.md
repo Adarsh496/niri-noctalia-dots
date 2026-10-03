@@ -170,6 +170,6 @@ My wallpapers are in [`wallpapers/`](wallpapers/). Noctalia builds its color sch
 
 <div align="center">
 
-If you like this setup, leave a star ⭐ ...
+If you like this setup, drop some stars ...
 
 </div>
